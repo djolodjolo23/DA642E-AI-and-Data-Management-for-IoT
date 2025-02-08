@@ -4,38 +4,13 @@
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 #include <TimeLib.h>
+#include "secrets.h"
 
-#define TASK2_1 0
-#define TASK2_2 0
-
-#if TASK2_1 1
-  void setup(){
-
-  }
-
-  void loop(){
-
-  }
-
-#endif
-
-#if TASK2_2 1
-  void setup(){
-
-  }
-
-  void loop(){
-
-  }
-
-#endif
-
-
-const char* ssid = "Pixel_4585";
-const char* password = "123456789";
+const char* ssid = SSID;
+const char* password = PASSWORD;
 
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000);
+NTPClient timeClient(ntpUDP, NTP_SERVER, 3600, 60000);
 
 unsigned long epochTime = 0;
 unsigned long lastUpdate = 0;

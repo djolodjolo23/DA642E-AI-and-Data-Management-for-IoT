@@ -5,14 +5,14 @@ import time
 """
 This script reads data from the serial port and writes it to a CSV file.
 The data is expected to be in the following format:
-Time: 12:34:56 | Temp: 30.6
+Date: 2021-03-01 | Time: 12:34:56 | Acc: 1.23, 4.56, 7.89 | Gyro: 0.12, 3.45, 6.78
 """
 
-SERIAL_PORT = '/dev/cu.usbmodem1101'
+SERIAL_PORT = '/dev/cu.usbmodem13201'
 BAUD_RATE = 9600
 
-CSV_FILENAME = "python/data.csv"
-NUM_ENTRIES = 900
+CSV_FILENAME = "data.csv"
+NUM_ENTRIES = 1200
 
 def main():
     try:
@@ -26,7 +26,7 @@ def main():
     time.sleep(2)
     with open(CSV_FILENAME, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(["Time", "Temperature"])
+        csv_writer.writerow(["Date", "Time", "Acc", "Gyro"])
         
         entry_count = 0
 
@@ -36,15 +36,17 @@ def main():
                 if not line:
                     continue
 
-                if line.startswith("Time:"):
+                if line.startswith("Date:"):
                     try:
-                        parts = line.split(" | Temp: ")
-                        time_str = parts[0].split("Time: ")[1].strip()
-                        temp_str = parts[1].strip()
+                        parts = line.split(" | ")
+                        date_str = parts[0].split("Date: ")[1].strip()
+                        time_str = parts[1].split("Time: ")[1].strip()
+                        acc_str = parts[2].split("Acc: ")[1].strip()
+                        gyro_str = parts[3].split("Gyro: ")[1].strip()
                         
-                        csv_writer.writerow([time_str, temp_str])
+                        csv_writer.writerow([date_str, time_str, acc_str, gyro_str])
                         entry_count += 1
-                        print(f"Recorded entry {entry_count}: Time = {time_str}, Temp = {temp_str}")
+                        print(f"Recorded entry {entry_count}: Date = {date_str}, Time = {time_str}, Acc = {acc_str}, Gyro = {gyro_str}")
                     except Exception as parse_err:
                         print(f"Parsing error on line: '{line}'. Error: {parse_err}")
                         continue
