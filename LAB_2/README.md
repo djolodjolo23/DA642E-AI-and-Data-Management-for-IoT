@@ -6,7 +6,7 @@ Each task is implemented in a Jupyter notebook (`main.ipynb`). The remaining fil
 
 ## Installing Dependencies
 
-For macOS and Linux users, a convenient way to install all dependencies is by using the `install_all_deps.sh` script. This script will create a global virtual environment and install all required dependencies for each task.  
+If you are macOS and Linux users, a convenient way to install all dependencies is by using the `install_all_deps.sh` script. This script will create a global virtual environment and install all required dependencies for each task.  
 
 To use it, run the following commands in the terminal:
 
