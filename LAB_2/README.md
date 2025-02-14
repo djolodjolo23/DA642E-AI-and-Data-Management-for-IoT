@@ -1,6 +1,6 @@
 # LAB_2 Repository
 
-The **LAB_2** repository is a subrepository of the **DA642E - AI and Data Management for IoT** course. It contains seven tasks, each organized in its own subdirectory, sequentially named from `A2_1` to `A2_5`.  
+The **LAB_2** repository is a subrepository of the **DA642E - AI and Data Management for IoT** course. It contains five tasks, each organized in its own subdirectory, sequentially named from `A2_1` to `A2_5`.  
 
 Each task is implemented in a Jupyter notebook (`main.ipynb`). The remaining files within the subdirectories include datasets, microcontroller code, and Python scripts for receiving data over serial communication.
 
